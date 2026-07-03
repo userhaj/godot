@@ -2147,7 +2147,7 @@ void DisplayServerWindows::window_drag_files(const PackedStringArray &p_files, D
 	// Copy all strings into the allocated block sequential block memory
 	WCHAR *write_cursor = (WCHAR *)((BYTE *)df + sizeof(DROPFILES));
 	for (int i = 0; i < p_files.size(); i++) {
-		String native_path = p_files[i].replace("/", "\\"); // Clean paths to Windows native notation
+		String native_path = OS_Windows::fix_path(p_files[i]); // Clean paths to Windows native notation
 		int path_len = native_path.length();
 		memcpy(write_cursor, native_path.utf16().ptr(), path_len * sizeof(WCHAR));
 		write_cursor[path_len] = L'\0';

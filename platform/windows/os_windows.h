@@ -238,6 +238,8 @@ public:
 
 	virtual String expand_path(const String &p_path) const override;
 
+	static String fix_path(const String &p_path);
+
 	virtual String get_unique_id() const override;
 
 	virtual Error shell_open(const String &p_uri) override;
